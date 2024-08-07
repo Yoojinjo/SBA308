@@ -106,9 +106,22 @@ LearnerSubmissions.forEach((item) => {
 });
 console.log(TotalScore);
 
-// Number of submissions by user
+// count the number of submissions by user
 
-
+// 
+let TotalSubmissions = {};
+// Iterate through the items array
+LearnerSubmissions.forEach((item) => {
+    // Check if the Learner_id already exists 
+    if (TotalSubmissions[item.learner_id]) {
+        // If it exists, add the value to the existing value
+        TotalSubmissions[item.learner_id] ++;
+    } else {
+        // If it does not exist, create it and set the initial value
+        TotalSubmissions[item.learner_id] =1;
+    }
+});
+console.log(TotalSubmissions);
 
 
 
