@@ -81,22 +81,52 @@ CourseInfo.id;
 console.log(CourseInfo.id);
 
 // get learner id
-let Learner = []
+
+// get learner id in array
+let Learner = [];
 for (let item of LearnerSubmissions) {
-    Learner.push(item.learner_id)
+    Learner.push(item.learner_id);
 }
-console.log(Learner)
+console.log(Learner);
+
+// WEIGHTED AVERAGE
+
+// if the learner ID is the same, then add the score together
+let TotalScore = {};
+// Iterate through the items array
+LearnerSubmissions.forEach((item) => {
+    // Check if the Learner_id already exists 
+    if (TotalScore[item.learner_id]) {
+        // If it exists, add the value to the existing value
+        TotalScore[item.learner_id] += item.submission.score;
+    } else {
+        // If it does not exist, create it and set the initial value
+        TotalScore[item.learner_id] = item.submission.score;
+    }
+});
+console.log(TotalScore);
+
+// Number of submissions by user
 
 
 
 
-function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
-    // here, we would process this data to achieve the desired result.
-    const result = [{}];
 
-    return result;
-}
 
-const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
-console.log(result);
+
+// Seperate user submissions by learner_id?
+
+
+
+
+// function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
+//     // here, we would process this data to achieve the desired result.
+//     const result = [{}];
+
+//     return result;
+// }
+
+//const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+
+// console.log(result);
