@@ -77,18 +77,22 @@ const LearnerSubmissions = [
 ];
 
 // get course info
-CourseInfo.id
-    console.log(CourseInfo.id)
+CourseInfo.id;
+console.log(CourseInfo.id);
+
+// get learner id
+let Learner = []
+for (let item of LearnerSubmissions) {
+    Learner.push(item.learner_id)
+}
+console.log(Learner)
+
 
 
 
 function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
     // here, we would process this data to achieve the desired result.
-    const result = [
-        {
-            
-        },
-    ];
+    const result = [{}];
 
     return result;
 }
