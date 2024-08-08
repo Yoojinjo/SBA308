@@ -86,7 +86,7 @@ const LearnerSubmissions = [
 // console.log(WIP)
 
 // //NEW IDEA for loop instead
-//     // ITERATE THRU LEARNER_SUBMISIONS
+//     // ITERATE THRU LEARNER_SUBMISsIONS
 
 // for (i=0; i<LearnerSubmissions.length; i++) {
 //          // CHECK IF THE LEARNER ID IS IN THE WIP FILE, if not then write it into the WIP file
@@ -96,7 +96,7 @@ const LearnerSubmissions = [
 // // get the assignment id,
 // let HW = LearnerSubmissions[i].assignment_id
 
-// // pass it into a function to return coresponding due_at
+// // pass it into a function to return corresponding due_at
 // // Function to retrieve the date based on the 'id'
 // function getdateByHW(HW) {
 //     const date = AssignmentGroup.assignments.find(a => a.id === HW);
@@ -154,7 +154,7 @@ const LearnerSubmissions = [
 //
 // use that to get the points_possible from AssignmentGroup
 
-// but it must be seperated per each StudentTotalScore
+// but it must be separated per each StudentTotalScore
 // so do this in the loop of total score?
 //  or pre sort LearnerSubmissions by learner_id?
 
@@ -177,7 +177,7 @@ const LearnerSubmissions = [
 // Does work
 // console.log(StudentTotalScore[125]/TotalSubmissions[125])
 
-// Seperate user submissions by learner_id?
+// Separate user submissions by learner_id? nope, bad idea
 
 // //NEW IDEA for loop instead
 // // Iterate through the items array
@@ -201,12 +201,12 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
         alert("AssignmentGroup does not match CourseInfo!");
 
         // here, we would process this data to achieve the desired result.
-        const result = [{}];
+        // const result = [{}];
 
-        return result;
+        // return result;
     }
 }
-const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+// const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
 //1 create array with student id's
 //2 create an object for each id
@@ -214,9 +214,27 @@ const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 //4 but first check if it is due before adding
 //5 check if it is late  eg. (Date.now) is current timestamp
 //6 deduct points before step3
-//7 calculate the average
+//7 calculate the assignment average
 //8 add the average to the object
+//9 calculate the total average from the assignments
+//10 add the total average (property) to the object
+// add some error catching.  ###did the wrong course info already###
 
+// trying to using array.forEAch instead
+// get learner ID
 
-// trying to using array.map instead
+let Ldata = []
 
+LearnerSubmissions.forEach(submission => {
+    let isThere = false
+    Ldata.forEach(LD => {
+        if (LD === submission.learner_id) {
+            isThere = true
+        }
+    })
+    if (!isThere){
+Ldata.push(submission.learner_id)
+    }
+    
+});
+console.log(Ldata)
