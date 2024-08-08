@@ -76,73 +76,44 @@ const LearnerSubmissions = [
     },
 ];
 
+// const Date = 2024-8-1
+// // INITIALIZE A WORKING FILE
+// let WIP = {
+//     "id": "",
+//     "average": "",
 
-// MAIN FUNCTION
-function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
-// GET COURSE INFO
-CourseInfo.id;
-console.log(CourseInfo.id);
-// COMPARE COURSE INFO, IF DOESN"T MATCH< THROW AN ALERT
-if (AssignmentGroup.course_id !== CourseInfo.id) {
-    alert("AssignmentGroup does not match CourseInfo!")
+// }
+// console.log(WIP)
 
-    // here, we would process this data to achieve the desired result.
-    const result = [{}];
+// //NEW IDEA for loop instead
+//     // ITERATE THRU LEARNER_SUBMISIONS
 
-    return result;
-}
-}
-const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+// for (i=0; i<LearnerSubmissions.length; i++) {
+//          // CHECK IF THE LEARNER ID IS IN THE WIP FILE, if not then write it into the WIP file
+//     if (LearnerSubmissions[i].learner_id != WIP.id) {
+// WIP.id = LearnerSubmissions[i].learner_id
 
+// // get the assignment id,
+// let HW = LearnerSubmissions[i].assignment_id
 
-const Date = 2024-8-1
-// INITIALIZE A WORKING FILE
-let WIP = {
-    "id": "",
-    "average": "",
-    
-}
-console.log(WIP)
+// // pass it into a function to return coresponding due_at
+// // Function to retrieve the date based on the 'id'
+// function getdateByHW(HW) {
+//     const date = AssignmentGroup.assignments.find(a => a.id === HW);
+//     return date ? date.due_at : null; // Return null if item not found
+//   }
 
-//NEW IDEA for loop instead
-    // ITERATE THRU LEARNER_SUBMISIONS
+// }}
 
-for (i=0; i<LearnerSubmissions.length; i++) {
-         // CHECK IF THE LEARNER ID IS IN THE WIP FILE, if not then write it into the WIP file
-    if (LearnerSubmissions[i].learner_id != WIP.id) {
-WIP.id = LearnerSubmissions[i].learner_id
-    
-
-// get the assignment id,   
-let HW = LearnerSubmissions[i].assignment_id
-
-// pass it into a function to return coresponding due_at
-// Function to retrieve the date based on the 'id'
-function getdateByHW(HW) {
-    const date = AssignmentGroup.assignments.find(a => a.id === HW);
-    return date ? date.due_at : null; // Return null if item not found
-  }
-
-}}
-
-
-
-
-console.log(AssignmentGroup.assignments[0].due_at)
+// console.log(AssignmentGroup.assignments[0].due_at)
 
 // cross-check it against the submitted date
-    // if assignment is due, add the assignment
-    // if (LearnerSubmissions[i].submission.submitted_at <= AssignmentGroup.assignments.due_at) {
-    //     new_obj = { ...WIP, 1:64}
-    //     }
+// if assignment is due, add the assignment
+// if (LearnerSubmissions[i].submission.submitted_at <= AssignmentGroup.assignments.due_at) {
+//     new_obj = { ...WIP, 1:64}
+//     }
 
-
-    console.log(WIP)
-
-
-
-
-
+// console.log(WIP) nope doesn't work the way i want
 
 // // get learner id in array
 // let Learner = [];
@@ -156,31 +127,27 @@ console.log(AssignmentGroup.assignments[0].due_at)
 // // build result object
 // let data = [{uniqueLearner}]
 
-
-
 // // FILTERED DATA SETS
 // let StudentData = LearnerSubmissions.filter(data => data.learner_id === uniqueLearner[0])
 // console.log(StudentData)
 
+// WEIGHTED AVERAGE doesn't work
 
-
-// WEIGHTED AVERAGE
-
-// if the learner ID is the same, then add the score together
-let StudentTotalScore = {};
-let TotalPointsPossible = {};
-// // Iterate through the items array
-LearnerSubmissions.forEach((item) => {
-    // Check if the Learner_id already exists
-    if (StudentTotalScore[item.learner_id]) {
-        // If it exists, add the value to the existing value
-        StudentTotalScore[item.learner_id] += item.submission.score;
-            } else {
-        // If it does not exist, create it and set the initial value
-        StudentTotalScore[item.learner_id] = item.submission.score;
-    }
-});
-console.log(StudentTotalScore);
+// // if the learner ID is the same, then add the score together
+// let StudentTotalScore = {};
+// let TotalPointsPossible = {};
+// // // Iterate through the items array
+// LearnerSubmissions.forEach((item) => {
+//     // Check if the Learner_id already exists
+//     if (StudentTotalScore[item.learner_id]) {
+//         // If it exists, add the value to the existing value
+//         StudentTotalScore[item.learner_id] += item.submission.score;
+//             } else {
+//         // If it does not exist, create it and set the initial value
+//         StudentTotalScore[item.learner_id] = item.submission.score;
+//     }
+// });
+// console.log(StudentTotalScore);
 
 // Total points_possible
 // get assignment_id from LearnerSubmissions
@@ -212,25 +179,44 @@ console.log(StudentTotalScore);
 
 // Seperate user submissions by learner_id?
 
-
-//NEW IDEA for loop instead
-    // Iterate through the items array
-let results =[{}]
-for (i=0; i<LearnerSubmissions.length; i++) {
-         // Check if the Learner_id already exists
-        results.push ([LearnerSubmissions[i].learner_id])
-    if (LearnerSubmissions[i].learner_id) {
-
-    }}
-
+// //NEW IDEA for loop instead
+// // Iterate through the items array
+// let results = [{}];
+// for (i = 0; i < LearnerSubmissions.length; i++) {
+//     // Check if the Learner_id already exists
+//     results.push([LearnerSubmissions[i].learner_id]);
+//     if (LearnerSubmissions[i].learner_id) {
+//     }
+// }
 
 // console.log(results)
 
+// MAIN FUNCTION
+function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
+    // GET COURSE INFO
+    CourseInfo.id;
+    console.log(CourseInfo.id);
+    // COMPARE COURSE INFO, IF DOESN"T MATCH< THROW AN ALERT
+    if (AssignmentGroup.course_id !== CourseInfo.id) {
+        alert("AssignmentGroup does not match CourseInfo!");
+
+        // here, we would process this data to achieve the desired result.
+        const result = [{}];
+
+        return result;
+    }
+}
+const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+
+//1 create array with student id's
+//2 create an object for each id
+//3 add the assignment where id is key and value is score
+//4 but first check if it is due before adding
+//5 check if it is late  eg. (Date.now) is current timestamp
+//6 deduct points before step3
+//7 calculate the average
+//8 add the average to the object
 
 
-
-
-
-
-
+// trying to using array.map instead
 
