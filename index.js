@@ -198,7 +198,6 @@ const LearnerSubmissions = [
 //------------------------------
 //------------------------------
 
-
 // -----------------------MAIN FUNCTION
 function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
     // GET COURSE INFO
@@ -216,12 +215,28 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
 }
 // const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
+// ----------PLAN - for each LearnerSubmission
 //1 create array with student id's
 //2 create an object for each id
-//3 add the assignment where id is key and value is score
-//4 but first check if it is due before adding
-//5 check if it is late  eg. (Date.now) is current timestamp
-//6 deduct points before step3
+
+// make a simpler array with only relevant data?
+AssignmentGroup.assignments.forEach((assignment) => {
+    let agID = assignment.id;
+    let dueDate = assignment.due_at;
+    let pointsPossible = assignment.points_possible;
+
+}); // Im not sure how to access this data later...
+
+
+//3 first check if the assignment is due
+// look at assignment_id use it to reference AssignmentGroup.assignments
+
+// if it is late, don't add
+// if it is not late proceed
+//4 check if it is late  eg. (Date.now) is current timestamp
+//6 if late deduct points
+//5 add the assignment where id is key and value is score
+
 //7 calculate the assignment average
 //8 add the average to the object
 //9 calculate the total average from the assignments
@@ -241,7 +256,7 @@ LearnerSubmissions.forEach((submission) => {
             isThere = true;
         }
     });
-    // if IsThere is still false, then can push the learner id into Ldata. 
+    // if IsThere is still false, then can push the learner id into LearnerID.
     if (!isThere) {
         LearnerID.push(submission.learner_id);
     } // Loop will now reset (isTHere becomes false at loop top.)
@@ -249,4 +264,7 @@ LearnerSubmissions.forEach((submission) => {
 console.log(LearnerID); // [125, 132]
 
 //2 create an object for each id
-let learner_info = [{}]
+let results = LearnerID.map((element) => ({ ID: element }));
+console.log(results);
+
+//3 add the assignment where id is key and value is score
