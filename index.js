@@ -76,6 +76,7 @@ const LearnerSubmissions = [
     },
 ];
 
+// IGNORE EVERYTHING COMMENTED OUT HERE
 // const Date = 2024-8-1
 // // INITIALIZE A WORKING FILE
 // let WIP = {
@@ -191,7 +192,14 @@ const LearnerSubmissions = [
 
 // console.log(results)
 
-// MAIN FUNCTION
+//------------------------------
+//------------------------------
+//------------------------------
+//------------------------------
+//------------------------------
+
+
+// -----------------------MAIN FUNCTION
 function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
     // GET COURSE INFO
     CourseInfo.id;
@@ -220,21 +228,21 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
 //10 add the total average (property) to the object
 // add some error catching.  ###did the wrong course info already###
 
-// trying to using array.forEAch instead
-// get learner ID
+//1 trying to using array.forEAch instead
+//1 get learner ID, wITH NO REPEATS
+let Ldata = [];
 
-let Ldata = []
-
-LearnerSubmissions.forEach(submission => {
-    let isThere = false
-    Ldata.forEach(LD => {
+LearnerSubmissions.forEach((submission) => {
+    let isThere = false;
+    Ldata.forEach((LD) => {
         if (LD === submission.learner_id) {
-            isThere = true
+            isThere = true;
         }
-    })
-    if (!isThere){
-Ldata.push(submission.learner_id)
+    });
+    if (!isThere) {
+        Ldata.push(submission.learner_id);
     }
-    
 });
-console.log(Ldata)
+console.log(Ldata);
+
+//2
