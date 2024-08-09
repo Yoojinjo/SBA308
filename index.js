@@ -231,17 +231,20 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
 //1 trying to using array.forEAch instead
 //1 get learner ID, wITH NO REPEATS
 let Ldata = [];
-
+// loop thru each learner submissions
 LearnerSubmissions.forEach((submission) => {
+    // check if ID is present in Ldata, does not exist by default
     let isThere = false;
     Ldata.forEach((LD) => {
+        // if ID does exist in Ldata, switch isTHere to true
         if (LD === submission.learner_id) {
             isThere = true;
         }
     });
+    // if IsThere is still false, then can push the learner id into Ldata. 
     if (!isThere) {
         Ldata.push(submission.learner_id);
-    }
+    } // Loop will now reset (isTHere becomes false at loop top.)
 });
 console.log(Ldata);
 
