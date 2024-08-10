@@ -97,22 +97,7 @@ const LearnerSubmissions = [
 // // get the assignment id,
 // let HW = LearnerSubmissions[i].assignment_id
 
-// // pass it into a function to return corresponding due_at
-// // Function to retrieve the date based on the 'id'
-// function getdateByHW(HW) {
-//     const date = AssignmentGroup.assignments.find(a => a.id === HW);
-//     return date ? date.due_at : null; // Return null if item not found
-//   }
 
-// }}
-
-// console.log(AssignmentGroup.assignments[0].due_at)
-
-// cross-check it against the submitted date
-// if assignment is due, add the assignment
-// if (LearnerSubmissions[i].submission.submitted_at <= AssignmentGroup.assignments.due_at) {
-//     new_obj = { ...WIP, 1:64}
-//     }
 
 // console.log(WIP) nope doesn't work the way i want
 
@@ -175,7 +160,7 @@ const LearnerSubmissions = [
 // console.log(TotalSubmissions); // DOESN'T WORK
 
 // let AverageScore = TotalScore / TotalPoints
-// Does work
+// Doesn't work
 // console.log(StudentTotalScore[125]/TotalSubmissions[125])
 
 // Separate user submissions by learner_id? nope, bad idea
@@ -198,14 +183,18 @@ const LearnerSubmissions = [
 //------------------------------
 //------------------------------
 
-// -----------------------MAIN FUNCTION
-function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
-    // GET COURSE INFO
+
+
+
+ // CHECK COURSE INFO
     CourseInfo.id;
     console.log(CourseInfo.id);
     // COMPARE COURSE INFO, IF DOESN"T MATCH< THROW AN ALERT
     if (AssignmentGroup.course_id !== CourseInfo.id) {
         alert("AssignmentGroup does not match CourseInfo!");
+// -----------------------MAIN FUNCTION
+function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
+   
 
         // here, we would process this data to achieve the desired result.
         // const result = [{}];
@@ -220,13 +209,45 @@ function getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions) {
 //2 create an object for each id
 
 // make a simpler array with only relevant data?
-AssignmentGroup.assignments.forEach((assignment) => {
-    let agID = assignment.id;
-    let dueDate = assignment.due_at;
-    let pointsPossible = assignment.points_possible;
+// AssignmentGroup.assignments.forEach((assignment) => {
+//     let agID = assignment.id;
+//     let dueDate = assignment.due_at;
+//     let pointsPossible = assignment.points_possible;
 
-}); // Im not sure how to access this data later...
+// }); // Im not sure how to access this data later...
+// // Create a new array of objects with selected data from the original array
+// const AssignmentGroupSimple = AssignmentGroup.assignments.map(({ id, due_at, points_possible}) => ({
+//     ID: id,
+//     dueDate: due_at,
+//     maxPoints: points_possible
+// }));
+// console.log(AssignmentGroupSimple);
+// //Remove if due date is greater than current date
+// // array.splice(start, deleteCount, item1, ..., itemX);
+// for (let i=0; i<AssignmentGroupSimple.length; i++){
+//     if (AssignmentGroupSimple[i].dueDate > new Date()) {
+//         AssignmentGroupSimple.splice(i,1);
+//         i--;
+//     }
+// }
+// console.log(AssignmentGroupSimple);
 
+// // pass it into a function to return corresponding due_at
+// // Function to retrieve the date based on the 'id'
+// function getdateByHW(HW) {
+//     const date = AssignmentGroup.assignments.find(a => a.id === HW);
+//     return date ? date.due_at : null; // Return null if item not found
+//   }
+
+// }}
+
+// console.log(AssignmentGroup.assignments[0].due_at)
+
+// cross-check it against the submitted date
+// if assignment is due, add the assignment
+// if (LearnerSubmissions[i].submission.submitted_at <= AssignmentGroup.assignments.due_at) {
+//     new_obj = { ...WIP, 1:64}
+//     }  // no doesn't work
 
 //3 first check if the assignment is due
 // look at assignment_id use it to reference AssignmentGroup.assignments
@@ -248,10 +269,10 @@ AssignmentGroup.assignments.forEach((assignment) => {
 let LearnerID = [];
 // loop thru each learner submissions
 LearnerSubmissions.forEach((submission) => {
-    // check if ID is present in Ldata, does not exist by default
+    // check if ID is present in LearnerID, does not exist by default
     let isThere = false;
     LearnerID.forEach((LD) => {
-        // if ID does exist in Ldata, switch isTHere to true
+        // if ID does exist in LearnerID, switch isTHere to true
         if (LD === submission.learner_id) {
             isThere = true;
         }
@@ -268,3 +289,5 @@ let results = LearnerID.map((element) => ({ ID: element }));
 console.log(results);
 
 //3 add the assignment where id is key and value is score
+
+
